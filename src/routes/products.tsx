@@ -179,12 +179,15 @@ function HorizontalCategories() {
           </div>
         </div>
 
-        {/* Horizontal track */}
-        <motion.div style={{ x }} className="flex gap-6 pl-[2vw] will-change-transform">
+        {/* Horizontal track — varied card sizes for editorial rhythm */}
+        <motion.div
+          style={{ x }}
+          className="flex items-center gap-5 pl-[3vw] will-change-transform md:gap-8"
+        >
           {categories.map((c) => (
             <article
               key={c.number}
-              className="group relative h-[78vh] w-[80vw] shrink-0 overflow-hidden rounded-3xl border border-border bg-card md:w-[58vw] lg:w-[44vw]"
+              className={`group relative shrink-0 overflow-hidden rounded-3xl border border-border bg-card ${sizeClasses[c.size]}`}
             >
               <img
                 src={c.image}
@@ -192,42 +195,48 @@ function HorizontalCategories() {
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-              <div className="absolute inset-x-0 top-0 flex items-start justify-between p-7 md:p-10">
-                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-brand">
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+              <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5 md:p-8">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand">
                   {c.number} / 09
                 </span>
-                <span className="rounded-full border border-border/60 bg-background/40 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-foreground/80 backdrop-blur">
-                  Category
-                </span>
+                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
+                  <span className="rounded-full border border-border/60 bg-background/40 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-foreground/80 backdrop-blur">
+                    Category
+                  </span>
+                )}
               </div>
-              <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
-                <p className="mb-3 text-xs uppercase tracking-[0.25em] text-brand">
-                  {c.tagline}
-                </p>
-                <h3 className="text-3xl font-semibold tracking-tight md:text-5xl">
+              <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
+                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.25em] text-brand">
+                    {c.tagline}
+                  </p>
+                )}
+                <h3 className={`font-semibold tracking-tight ${titleClasses[c.size]}`}>
                   {c.name}
                 </h3>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {c.description}
-                </p>
+                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+                    {c.description}
+                  </p>
+                )}
                 <a
                   href="#"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
+                  className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-foreground transition-colors hover:text-brand md:text-sm"
                 >
-                  Explore category <ArrowRight className="h-4 w-4" />
+                  Explore <ArrowRight className="h-3.5 w-3.5" />
                 </a>
               </div>
             </article>
           ))}
 
-          {/* End card */}
-          <article className="relative flex h-[78vh] w-[80vw] shrink-0 flex-col items-start justify-between overflow-hidden rounded-3xl border border-brand/30 bg-gradient-to-br from-surface to-background p-10 md:w-[44vw] md:p-14">
+          {/* End CTA card */}
+          <article className="relative flex h-[72vh] w-[82vw] shrink-0 flex-col items-start justify-between overflow-hidden rounded-3xl border border-brand/30 bg-gradient-to-br from-surface to-background p-8 md:h-[70vh] md:w-[42vw] md:self-center md:p-12">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand">
               End of categories
             </p>
             <div>
-              <h3 className="text-4xl font-semibold tracking-tight md:text-5xl">
+              <h3 className="text-3xl font-semibold tracking-tight md:text-5xl">
                 Ready to develop your{" "}
                 <span className="text-gradient-brand">next program?</span>
               </h3>
