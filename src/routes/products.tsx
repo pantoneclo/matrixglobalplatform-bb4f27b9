@@ -131,19 +131,12 @@ const categories: Category[] = [
 ];
 
 const sizeClasses: Record<CardSize, string> = {
-  lg: "w-[82vw] h-[78vh] md:w-[50vw] md:h-[78vh] md:self-center",
-  md: "w-[72vw] h-[60vh] md:w-[34vw] md:h-[58vh] md:self-start md:mt-[6vh]",
-  sm: "w-[62vw] h-[48vh] md:w-[24vw] md:h-[44vh] md:self-end md:mb-[6vh]",
-  tall: "w-[72vw] h-[82vh] md:w-[32vw] md:h-[82vh] md:self-center",
-  wide: "w-[88vw] h-[56vh] md:w-[58vw] md:h-[54vh] md:self-center",
-};
-
-const titleClasses: Record<CardSize, string> = {
-  lg: "text-3xl md:text-5xl",
-  md: "text-2xl md:text-4xl",
-  sm: "text-xl md:text-2xl",
-  tall: "text-3xl md:text-5xl",
-  wide: "text-3xl md:text-5xl",
+  // width / height combos chosen to create a varied editorial rhythm
+  lg: "w-[78vw] h-[72vh] md:w-[44vw] md:h-[74vh] md:self-center",
+  md: "w-[68vw] h-[58vh] md:w-[30vw] md:h-[56vh] md:self-start md:mt-[5vh]",
+  sm: "w-[58vw] h-[46vh] md:w-[22vw] md:h-[42vh] md:self-end md:mb-[5vh]",
+  tall: "w-[68vw] h-[80vh] md:w-[28vw] md:h-[80vh] md:self-center",
+  wide: "w-[84vw] h-[52vh] md:w-[50vw] md:h-[50vh] md:self-center",
 };
 
 function HorizontalCategories() {
@@ -187,7 +180,7 @@ function HorizontalCategories() {
           {categories.map((c) => (
             <article
               key={c.number}
-              className={`group relative shrink-0 overflow-hidden rounded-3xl border border-border bg-card ${sizeClasses[c.size]}`}
+              className={`group relative shrink-0 overflow-hidden rounded-2xl border border-border bg-card ${sizeClasses[c.size]}`}
             >
               <img
                 src={c.image}
@@ -195,37 +188,35 @@ function HorizontalCategories() {
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-              <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5 md:p-8">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand">
-                  {c.number} / 09
+              {/* subtle bottom gradient only — keeps image clean */}
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+
+              {/* Top-left index */}
+              <div className="absolute left-4 top-4 md:left-5 md:top-5">
+                <span className="rounded-full bg-background/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-brand backdrop-blur">
+                  {c.number}
                 </span>
-                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
-                  <span className="rounded-full border border-border/60 bg-background/40 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-foreground/80 backdrop-blur">
-                    Category
-                  </span>
-                )}
               </div>
-              <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
-                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
-                  <p className="mb-2 text-[11px] uppercase tracking-[0.25em] text-brand">
-                    {c.tagline}
-                  </p>
-                )}
-                <h3 className={`font-semibold tracking-tight ${titleClasses[c.size]}`}>
-                  {c.name}
-                </h3>
-                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-                    {c.description}
-                  </p>
-                )}
-                <a
-                  href="#"
-                  className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-foreground transition-colors hover:text-brand md:text-sm"
-                >
-                  Explore <ArrowRight className="h-3.5 w-3.5" />
-                </a>
+
+              {/* Compact name plate at bottom */}
+              <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
+                <div className="flex items-end justify-between gap-3">
+                  <div className="min-w-0">
+                    <h3 className="truncate text-sm font-semibold tracking-tight text-foreground md:text-base">
+                      {c.name}
+                    </h3>
+                    <p className="mt-0.5 truncate text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                      {c.tagline}
+                    </p>
+                  </div>
+                  <a
+                    href="#"
+                    aria-label={`Explore ${c.name}`}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/60 bg-background/60 text-foreground/80 backdrop-blur transition-colors hover:border-brand hover:text-brand"
+                  >
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
               </div>
             </article>
           ))}
@@ -306,50 +297,6 @@ function ProductsPage() {
         {/* Horizontal scroll-driven slider */}
         <HorizontalCategories />
 
-        {/* Grid fallback / overview */}
-        <section className="bg-surface py-24 md:py-32">
-          <div className="container-x">
-            <Reveal>
-              <div className="mb-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-                <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
-                  At a glance
-                </h2>
-                <p className="max-w-md text-sm text-muted-foreground">
-                  All nine product categories developed under one integrated
-                  manufacturing group.
-                </p>
-              </div>
-            </Reveal>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-3">
-              {categories.map((c, i) => (
-                <Reveal key={c.name} delay={i * 0.04}>
-                  <a
-                    href="#"
-                    className="group relative block aspect-[4/5] overflow-hidden rounded-2xl border border-border"
-                  >
-                    <img
-                      src={c.image}
-                      alt={c.name}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-                    <div className="absolute inset-x-0 top-0 p-5">
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-brand">
-                        {c.number}
-                      </span>
-                    </div>
-                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                      <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-2xl">
-                        {c.name}
-                      </h3>
-                    </div>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>
