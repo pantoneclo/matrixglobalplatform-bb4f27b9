@@ -1,19 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
-import lounge from "@/assets/cat-lounge.jpg";
-import innerwear from "@/assets/cat-innerwear.jpg";
-import lingerie from "@/assets/cat-lingerie.jpg";
-import activewear from "@/assets/cat-activewear.jpg";
-import casual from "@/assets/cat-casual.jpg";
-import denim from "@/assets/cat-denim.jpg";
-import swimwear from "@/assets/cat-swimwear.jpg";
-import knitwear from "@/assets/cat-knitwear.jpg";
-import kids from "@/assets/cat-kids.jpg";
+import { categories, type CardSize } from "@/lib/categories";
 
 export const Route = createFileRoute("/products")({
   head: () => ({

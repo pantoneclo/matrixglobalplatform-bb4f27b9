@@ -94,18 +94,21 @@ function CategoryDetail() {
                 <span className="text-brand">{category.number}</span>
               </Link>
               <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl lg:text-8xl">
-                {category.name.split(" & ").map((part, i, arr) => (
-                  <span key={i} className="block">
-                    {i === arr.length - 1 && arr.length > 1 ? (
-                      <span className="text-gradient-brand">{part}</span>
-                    ) : (
-                      <>
-                        {part}
-                        {i < arr.length - 1 ? " &" : ""}
-                      </>
-                    )}
-                  </span>
-                ))}
+                {(() => {
+                  const parts = category.name.split(" & ");
+                  return parts.map((part: string, i: number) => (
+                    <span key={i} className="block">
+                      {i === parts.length - 1 && parts.length > 1 ? (
+                        <span className="text-gradient-brand">{part}</span>
+                      ) : (
+                        <>
+                          {part}
+                          {i < parts.length - 1 ? " &" : ""}
+                        </>
+                      )}
+                    </span>
+                  ));
+                })()}
               </h1>
               <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
                 {category.heroIntro}
