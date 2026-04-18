@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { MapPin, ArrowUpRight } from "lucide-react";
+import { MapPin, ArrowUpRight, ArrowRight } from "lucide-react";
 import bangladeshImg from "@/assets/bangladesh.jpg";
 import srilankaImg from "@/assets/srilanka.jpg";
+
+type FactoryUnit = { name: string; slug: string; tag?: string };
 
 type Unit = {
   id: string;
@@ -11,7 +14,7 @@ type Unit = {
   flag: string;
   description: string;
   image: string;
-  units: { name: string; tag?: string }[];
+  units: FactoryUnit[];
 };
 
 const data: Unit[] = [
@@ -23,11 +26,11 @@ const data: Unit[] = [
       "High-volume manufacturing across knit and woven programs with vertically integrated capability.",
     image: bangladeshImg,
     units: [
-      { name: "Matrix Apparels Ltd", tag: "Built from scratch" },
-      { name: "MB Knit Fashion", tag: "Est. 1992 · LPP A-Rated" },
-      { name: "Westknit", tag: "Knit specialist" },
-      { name: "IFS Texwear Ltd", tag: "80 lines · 20 tons/day" },
-      { name: "Lithe Group", tag: "Partner factory" },
+      { name: "Matrix Apparels Ltd", slug: "matrix-apparels", tag: "Built from scratch" },
+      { name: "MB Knit Fashion", slug: "mb-knit-fashion", tag: "Est. 1992 · LPP A-Rated" },
+      { name: "Westknit", slug: "westknit", tag: "Knit specialist" },
+      { name: "IFS Texwear Ltd", slug: "ifs-texwear", tag: "80 lines · 20 tons/day" },
+      { name: "Lithe Group", slug: "lithe-group", tag: "Partner factory" },
     ],
   },
   {
@@ -37,7 +40,7 @@ const data: Unit[] = [
     description:
       "Technical lingerie and polyamide product capability with BOI-approved manufacturing strength.",
     image: srilankaImg,
-    units: [{ name: "Amanté Brand", tag: "Lingerie · Intimates" }],
+    units: [{ name: "Amanté Brand", slug: "amante", tag: "Lingerie · Intimates" }],
   },
 ];
 
@@ -130,18 +133,26 @@ export function Manufacturing() {
                 <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
                   Our Units
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-1">
                   {active.units.map((u) => (
-                    <li
-                      key={u.name}
-                      className="flex items-center justify-between border-b border-border pb-3 last:border-0 last:pb-0"
-                    >
-                      <span className="font-medium">{u.name}</span>
-                      {u.tag && (
-                        <span className="text-xs text-muted-foreground">
-                          {u.tag}
+                    <li key={u.slug}>
+                      <Link
+                        to="/factories/$slug"
+                        params={{ slug: u.slug }}
+                        className="group/row flex items-center justify-between gap-3 rounded-lg border-b border-border px-1 py-3 transition-colors last:border-0 hover:border-brand/40 hover:bg-brand/5 hover:px-3"
+                      >
+                        <span className="font-medium transition-colors group-hover/row:text-brand">
+                          {u.name}
                         </span>
-                      )}
+                        <span className="flex items-center gap-2">
+                          {u.tag && (
+                            <span className="text-xs text-muted-foreground">
+                              {u.tag}
+                            </span>
+                          )}
+                          <ArrowRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition-all group-hover/row:translate-x-0.5 group-hover/row:text-brand group-hover/row:opacity-100" />
+                        </span>
+                      </Link>
                     </li>
                   ))}
                 </ul>

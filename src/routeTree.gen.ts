@@ -17,6 +17,7 @@ import { Route as BrandsRouteImport } from './routes/brands'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
+import { Route as FactoriesSlugRouteImport } from './routes/factories.$slug'
 
 const SustainabilityRoute = SustainabilityRouteImport.update({
   id: '/sustainability',
@@ -58,6 +59,11 @@ const ProductsSlugRoute = ProductsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ProductsRoute,
 } as any)
+const FactoriesSlugRoute = FactoriesSlugRouteImport.update({
+  id: '/factories/$slug',
+  path: '/factories/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRouteWithChildren
   '/services': typeof ServicesRoute
   '/sustainability': typeof SustainabilityRoute
+  '/factories/$slug': typeof FactoriesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRouteWithChildren
   '/services': typeof ServicesRoute
   '/sustainability': typeof SustainabilityRoute
+  '/factories/$slug': typeof FactoriesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesById {
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRouteWithChildren
   '/services': typeof ServicesRoute
   '/sustainability': typeof SustainabilityRoute
+  '/factories/$slug': typeof FactoriesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/services'
     | '/sustainability'
+    | '/factories/$slug'
     | '/products/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/services'
     | '/sustainability'
+    | '/factories/$slug'
     | '/products/$slug'
   id:
     | '__root__'
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/services'
     | '/sustainability'
+    | '/factories/$slug'
     | '/products/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRouteWithChildren
   ServicesRoute: typeof ServicesRoute
   SustainabilityRoute: typeof SustainabilityRoute
+  FactoriesSlugRoute: typeof FactoriesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsSlugRouteImport
       parentRoute: typeof ProductsRoute
     }
+    '/factories/$slug': {
+      id: '/factories/$slug'
+      path: '/factories/$slug'
+      fullPath: '/factories/$slug'
+      preLoaderRoute: typeof FactoriesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -214,6 +234,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRouteWithChildren,
   ServicesRoute: ServicesRoute,
   SustainabilityRoute: SustainabilityRoute,
+  FactoriesSlugRoute: FactoriesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
