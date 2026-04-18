@@ -3,7 +3,7 @@ import { ArrowRight, Download, ArrowLeft } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
-import { getCategoryBySlug, categories } from "@/lib/categories";
+import { getCategoryBySlug, categories as allCategories } from "@/lib/categories";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
@@ -65,7 +65,7 @@ export const Route = createFileRoute("/products/$slug")({
 
 function CategoryDetail() {
   const { category } = Route.useLoaderData();
-  const others = categories.filter((c) => c.slug !== category.slug).slice(0, 4);
+  const others = allCategories.filter((c) => c.slug !== category.slug).slice(0, 4);
   const [g1, g2, g3, g4, g5, g6] = category.gallery;
 
   return (
