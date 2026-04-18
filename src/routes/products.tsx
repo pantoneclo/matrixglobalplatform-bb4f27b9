@@ -180,7 +180,7 @@ function HorizontalCategories() {
           {categories.map((c) => (
             <article
               key={c.number}
-              className={`group relative shrink-0 overflow-hidden rounded-3xl border border-border bg-card ${sizeClasses[c.size]}`}
+              className={`group relative shrink-0 overflow-hidden rounded-2xl border border-border bg-card ${sizeClasses[c.size]}`}
             >
               <img
                 src={c.image}
@@ -188,37 +188,35 @@ function HorizontalCategories() {
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-              <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5 md:p-8">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand">
-                  {c.number} / 09
+              {/* subtle bottom gradient only — keeps image clean */}
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+
+              {/* Top-left index */}
+              <div className="absolute left-4 top-4 md:left-5 md:top-5">
+                <span className="rounded-full bg-background/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-brand backdrop-blur">
+                  {c.number}
                 </span>
-                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
-                  <span className="rounded-full border border-border/60 bg-background/40 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-foreground/80 backdrop-blur">
-                    Category
-                  </span>
-                )}
               </div>
-              <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
-                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
-                  <p className="mb-2 text-[11px] uppercase tracking-[0.25em] text-brand">
-                    {c.tagline}
-                  </p>
-                )}
-                <h3 className={`font-semibold tracking-tight ${titleClasses[c.size]}`}>
-                  {c.name}
-                </h3>
-                {(c.size === "lg" || c.size === "tall" || c.size === "wide") && (
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-                    {c.description}
-                  </p>
-                )}
-                <a
-                  href="#"
-                  className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-foreground transition-colors hover:text-brand md:text-sm"
-                >
-                  Explore <ArrowRight className="h-3.5 w-3.5" />
-                </a>
+
+              {/* Compact name plate at bottom */}
+              <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
+                <div className="flex items-end justify-between gap-3">
+                  <div className="min-w-0">
+                    <h3 className="truncate text-sm font-semibold tracking-tight text-foreground md:text-base">
+                      {c.name}
+                    </h3>
+                    <p className="mt-0.5 truncate text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                      {c.tagline}
+                    </p>
+                  </div>
+                  <a
+                    href="#"
+                    aria-label={`Explore ${c.name}`}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/60 bg-background/60 text-foreground/80 backdrop-blur transition-colors hover:border-brand hover:text-brand"
+                  >
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
               </div>
             </article>
           ))}
