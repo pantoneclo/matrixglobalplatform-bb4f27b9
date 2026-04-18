@@ -131,12 +131,12 @@ const categories: Category[] = [
 ];
 
 const sizeClasses: Record<CardSize, string> = {
-  // width / height combos chosen to create a varied editorial rhythm
-  lg: "w-[78vw] h-[72vh] md:w-[44vw] md:h-[74vh] md:self-center",
-  md: "w-[68vw] h-[58vh] md:w-[30vw] md:h-[56vh] md:self-start md:mt-[5vh]",
-  sm: "w-[58vw] h-[46vh] md:w-[22vw] md:h-[42vh] md:self-end md:mb-[5vh]",
-  tall: "w-[68vw] h-[80vh] md:w-[28vw] md:h-[80vh] md:self-center",
-  wide: "w-[84vw] h-[52vh] md:w-[50vw] md:h-[50vh] md:self-center",
+  // outer wrapper sizes — image + name plate stack inside
+  lg: "w-[78vw] h-[74vh] md:w-[40vw] md:h-[78vh] md:self-center",
+  md: "w-[68vw] h-[60vh] md:w-[26vw] md:h-[60vh] md:self-start md:mt-[4vh]",
+  sm: "w-[58vw] h-[48vh] md:w-[20vw] md:h-[44vh] md:self-end md:mb-[6vh]",
+  tall: "w-[68vw] h-[82vh] md:w-[26vw] md:h-[84vh] md:self-center",
+  wide: "w-[84vw] h-[56vh] md:w-[44vw] md:h-[54vh] md:self-center",
 };
 
 function HorizontalCategories() {
@@ -180,43 +180,35 @@ function HorizontalCategories() {
           {categories.map((c) => (
             <article
               key={c.number}
-              className={`group relative shrink-0 overflow-hidden rounded-2xl border border-border bg-card ${sizeClasses[c.size]}`}
+              className={`group flex shrink-0 flex-col ${sizeClasses[c.size]}`}
             >
-              <img
-                src={c.image}
-                alt={c.name}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
-              />
-              {/* subtle bottom gradient only — keeps image clean */}
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
-
-              {/* Top-left index */}
-              <div className="absolute left-4 top-4 md:left-5 md:top-5">
-                <span className="rounded-full bg-background/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-brand backdrop-blur">
+              {/* Image card — clean white background, no overlay */}
+              <a
+                href="#"
+                className="relative block flex-1 overflow-hidden rounded-2xl bg-white"
+              >
+                <img
+                  src={c.image}
+                  alt={c.name}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04]"
+                />
+                <span className="absolute left-3 top-3 rounded-full bg-background/80 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-brand backdrop-blur md:left-4 md:top-4">
                   {c.number}
                 </span>
-              </div>
+              </a>
 
-              {/* Compact name plate at bottom */}
-              <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-                <div className="flex items-end justify-between gap-3">
-                  <div className="min-w-0">
-                    <h3 className="truncate text-sm font-semibold tracking-tight text-foreground md:text-base">
-                      {c.name}
-                    </h3>
-                    <p className="mt-0.5 truncate text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                      {c.tagline}
-                    </p>
-                  </div>
-                  <a
-                    href="#"
-                    aria-label={`Explore ${c.name}`}
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/60 bg-background/60 text-foreground/80 backdrop-blur transition-colors hover:border-brand hover:text-brand"
-                  >
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
+              {/* Separate dark name plate */}
+              <div className="mt-2 flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 transition-colors group-hover:border-brand/60 md:mt-3 md:px-5 md:py-3.5">
+                <div className="min-w-0">
+                  <h3 className="truncate text-sm font-semibold tracking-tight text-foreground md:text-[15px]">
+                    {c.name}
+                  </h3>
+                  <p className="mt-0.5 hidden truncate text-[10px] uppercase tracking-[0.22em] text-muted-foreground md:block">
+                    {c.tagline}
+                  </p>
                 </div>
+                <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-brand" />
               </div>
             </article>
           ))}
