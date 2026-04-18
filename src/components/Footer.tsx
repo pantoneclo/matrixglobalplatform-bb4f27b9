@@ -36,15 +36,14 @@ export function Footer() {
     <footer className="relative border-t border-border bg-surface">
       <div className="container-x grid gap-12 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="space-y-5">
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-brand text-brand-foreground font-bold">
-              M
-            </div>
-            <div className="leading-tight">
-              <div className="text-sm font-semibold tracking-[0.2em]">MATRIX</div>
-              <div className="text-[10px] tracking-[0.3em] text-muted-foreground">
-                PLATFORM
-              </div>
+          <div className="flex items-center gap-3">
+            <svg viewBox="0 0 48 48" className="h-9 w-9 text-brand" fill="none" aria-hidden="true">
+              <path d="M24 2 L46 24 L24 46 L2 24 Z" stroke="currentColor" strokeWidth="2.5" fill="currentColor" fillOpacity="0.12" />
+              <path d="M14 32 V18 L24 28 L34 18 V32" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            </svg>
+            <div className="text-lg font-bold tracking-wide leading-none">
+              <span className="text-foreground">MATRIX</span>{" "}
+              <span className="text-brand">PLATFORM</span>
             </div>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">

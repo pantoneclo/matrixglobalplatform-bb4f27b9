@@ -31,16 +31,34 @@ export function Header() {
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between md:h-20">
-        <Link to="/" className="group flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-brand text-brand-foreground font-bold shadow-glow">
-            M
-          </div>
-          <div className="leading-tight">
-            <div className="text-sm font-semibold tracking-[0.2em] text-foreground">
-              MATRIX
-            </div>
-            <div className="text-[10px] tracking-[0.3em] text-muted-foreground">
-              PLATFORM
+        <Link to="/" className="group flex items-center gap-3">
+          <svg
+            viewBox="0 0 48 48"
+            className="h-9 w-9 text-brand"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M24 2 L46 24 L24 46 L2 24 Z"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              fill="currentColor"
+              fillOpacity="0.12"
+            />
+            <path
+              d="M14 32 V18 L24 28 L34 18 V32"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          <div className="leading-none">
+            <div className="text-lg font-bold tracking-wide">
+              <span className="text-foreground">MATRIX</span>{" "}
+              <span className="text-brand">PLATFORM</span>
             </div>
           </div>
         </Link>
