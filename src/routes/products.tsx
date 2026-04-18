@@ -131,12 +131,12 @@ const categories: Category[] = [
 ];
 
 const sizeClasses: Record<CardSize, string> = {
-  // width / height combos chosen to create a varied editorial rhythm
-  lg: "w-[78vw] h-[72vh] md:w-[44vw] md:h-[74vh] md:self-center",
-  md: "w-[68vw] h-[58vh] md:w-[30vw] md:h-[56vh] md:self-start md:mt-[5vh]",
-  sm: "w-[58vw] h-[46vh] md:w-[22vw] md:h-[42vh] md:self-end md:mb-[5vh]",
-  tall: "w-[68vw] h-[80vh] md:w-[28vw] md:h-[80vh] md:self-center",
-  wide: "w-[84vw] h-[52vh] md:w-[50vw] md:h-[50vh] md:self-center",
+  // outer wrapper sizes — image + name plate stack inside
+  lg: "w-[78vw] h-[74vh] md:w-[40vw] md:h-[78vh] md:self-center",
+  md: "w-[68vw] h-[60vh] md:w-[26vw] md:h-[60vh] md:self-start md:mt-[4vh]",
+  sm: "w-[58vw] h-[48vh] md:w-[20vw] md:h-[44vh] md:self-end md:mb-[6vh]",
+  tall: "w-[68vw] h-[82vh] md:w-[26vw] md:h-[84vh] md:self-center",
+  wide: "w-[84vw] h-[56vh] md:w-[44vw] md:h-[54vh] md:self-center",
 };
 
 function HorizontalCategories() {
