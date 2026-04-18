@@ -35,12 +35,15 @@ export const Route = createFileRoute("/products")({
   component: ProductsPage,
 });
 
+type CardSize = "lg" | "md" | "sm" | "tall" | "wide";
+
 type Category = {
   number: string;
   name: string;
   tagline: string;
   description: string;
   image: string;
+  size: CardSize;
 };
 
 const categories: Category[] = [
@@ -51,6 +54,7 @@ const categories: Category[] = [
     description:
       "Soft jersey, modal and brushed cotton constructions developed for premium retail loungewear and sleep programs.",
     image: lounge,
+    size: "lg",
   },
   {
     number: "02",
@@ -59,6 +63,7 @@ const categories: Category[] = [
     description:
       "Seamless, cut-and-sew and stretch innerwear produced at scale with full vertical control over fabric and finish.",
     image: innerwear,
+    size: "sm",
   },
   {
     number: "03",
@@ -67,6 +72,7 @@ const categories: Category[] = [
     description:
       "Polyamide and elastane intimates developed in Sri Lanka under our amanté operation — molded cups, bonded edges, micro-prints.",
     image: lingerie,
+    size: "tall",
   },
   {
     number: "04",
@@ -75,6 +81,7 @@ const categories: Category[] = [
     description:
       "Moisture management, four-way stretch and recycled polyester programs developed for global activewear brands.",
     image: activewear,
+    size: "wide",
   },
   {
     number: "05",
@@ -83,6 +90,7 @@ const categories: Category[] = [
     description:
       "Heavyweight cotton, French terry and printed jersey programs — the volume engine of our Bangladesh operations.",
     image: casual,
+    size: "md",
   },
   {
     number: "06",
@@ -91,6 +99,7 @@ const categories: Category[] = [
     description:
       "Full-package denim with in-house wash development, laser finishing and sustainable indigo dyeing.",
     image: denim,
+    size: "lg",
   },
   {
     number: "07",
@@ -99,6 +108,7 @@ const categories: Category[] = [
     description:
       "Bonded and sewn swimwear developed with our Chinese fabric mill — recycled nylon and polyester programs.",
     image: swimwear,
+    size: "sm",
   },
   {
     number: "08",
@@ -107,6 +117,7 @@ const categories: Category[] = [
     description:
       "Fine-gauge and chunky knit programs from Westknit — yarn-dyed jacquards, intarsia, and sustainable wool blends.",
     image: knitwear,
+    size: "tall",
   },
   {
     number: "09",
@@ -115,8 +126,25 @@ const categories: Category[] = [
     description:
       "Kidswear from newborn to 14 years — printed jersey, knit sets and outerwear programs with full compliance audit.",
     image: kids,
+    size: "wide",
   },
 ];
+
+const sizeClasses: Record<CardSize, string> = {
+  lg: "w-[82vw] h-[78vh] md:w-[50vw] md:h-[78vh] md:self-center",
+  md: "w-[72vw] h-[60vh] md:w-[34vw] md:h-[58vh] md:self-start md:mt-[6vh]",
+  sm: "w-[62vw] h-[48vh] md:w-[24vw] md:h-[44vh] md:self-end md:mb-[6vh]",
+  tall: "w-[72vw] h-[82vh] md:w-[32vw] md:h-[82vh] md:self-center",
+  wide: "w-[88vw] h-[56vh] md:w-[58vw] md:h-[54vh] md:self-center",
+};
+
+const titleClasses: Record<CardSize, string> = {
+  lg: "text-3xl md:text-5xl",
+  md: "text-2xl md:text-4xl",
+  sm: "text-xl md:text-2xl",
+  tall: "text-3xl md:text-5xl",
+  wide: "text-3xl md:text-5xl",
+};
 
 function HorizontalCategories() {
   const targetRef = useRef<HTMLDivElement>(null);
