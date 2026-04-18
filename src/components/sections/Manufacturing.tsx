@@ -133,18 +133,26 @@ export function Manufacturing() {
                 <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
                   Our Units
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-1">
                   {active.units.map((u) => (
-                    <li
-                      key={u.name}
-                      className="flex items-center justify-between border-b border-border pb-3 last:border-0 last:pb-0"
-                    >
-                      <span className="font-medium">{u.name}</span>
-                      {u.tag && (
-                        <span className="text-xs text-muted-foreground">
-                          {u.tag}
+                    <li key={u.slug}>
+                      <Link
+                        to="/factories/$slug"
+                        params={{ slug: u.slug }}
+                        className="group/row flex items-center justify-between gap-3 rounded-lg border-b border-border px-1 py-3 transition-colors last:border-0 hover:border-brand/40 hover:bg-brand/5 hover:px-3"
+                      >
+                        <span className="font-medium transition-colors group-hover/row:text-brand">
+                          {u.name}
                         </span>
-                      )}
+                        <span className="flex items-center gap-2">
+                          {u.tag && (
+                            <span className="text-xs text-muted-foreground">
+                              {u.tag}
+                            </span>
+                          )}
+                          <ArrowRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition-all group-hover/row:translate-x-0.5 group-hover/row:text-brand group-hover/row:opacity-100" />
+                        </span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
