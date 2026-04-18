@@ -81,8 +81,9 @@ function HorizontalCategories() {
               className={`group flex shrink-0 flex-col ${sizeClasses[c.size]}`}
             >
               {/* Image card — clean white background, no overlay */}
-              <a
-                href="#"
+              <Link
+                to="/products/$slug"
+                params={{ slug: c.slug }}
                 className="relative block flex-1 overflow-hidden rounded-2xl bg-white"
               >
                 <img
@@ -94,10 +95,14 @@ function HorizontalCategories() {
                 <span className="absolute left-3 top-3 rounded-full bg-background/80 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-brand backdrop-blur md:left-4 md:top-4">
                   {c.number}
                 </span>
-              </a>
+              </Link>
 
               {/* Separate dark name plate */}
-              <div className="mt-2 flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 transition-colors group-hover:border-brand/60 md:mt-3 md:px-5 md:py-3.5">
+              <Link
+                to="/products/$slug"
+                params={{ slug: c.slug }}
+                className="mt-2 flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 transition-colors hover:border-brand/60 group-hover:border-brand/60 md:mt-3 md:px-5 md:py-3.5"
+              >
                 <div className="min-w-0">
                   <h3 className="truncate text-sm font-semibold tracking-tight text-foreground md:text-[15px]">
                     {c.name}
@@ -107,7 +112,7 @@ function HorizontalCategories() {
                   </p>
                 </div>
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-brand" />
-              </div>
+              </Link>
             </article>
           ))}
 
