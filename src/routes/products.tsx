@@ -306,50 +306,6 @@ function ProductsPage() {
         {/* Horizontal scroll-driven slider */}
         <HorizontalCategories />
 
-        {/* Grid fallback / overview */}
-        <section className="bg-surface py-24 md:py-32">
-          <div className="container-x">
-            <Reveal>
-              <div className="mb-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-                <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
-                  At a glance
-                </h2>
-                <p className="max-w-md text-sm text-muted-foreground">
-                  All nine product categories developed under one integrated
-                  manufacturing group.
-                </p>
-              </div>
-            </Reveal>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-3">
-              {categories.map((c, i) => (
-                <Reveal key={c.name} delay={i * 0.04}>
-                  <a
-                    href="#"
-                    className="group relative block aspect-[4/5] overflow-hidden rounded-2xl border border-border"
-                  >
-                    <img
-                      src={c.image}
-                      alt={c.name}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-                    <div className="absolute inset-x-0 top-0 p-5">
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-brand">
-                        {c.number}
-                      </span>
-                    </div>
-                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                      <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-2xl">
-                        {c.name}
-                      </h3>
-                    </div>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>
