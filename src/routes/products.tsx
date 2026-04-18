@@ -1,19 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
-import lounge from "@/assets/cat-lounge.jpg";
-import innerwear from "@/assets/cat-innerwear.jpg";
-import lingerie from "@/assets/cat-lingerie.jpg";
-import activewear from "@/assets/cat-activewear.jpg";
-import casual from "@/assets/cat-casual.jpg";
-import denim from "@/assets/cat-denim.jpg";
-import swimwear from "@/assets/cat-swimwear.jpg";
-import knitwear from "@/assets/cat-knitwear.jpg";
-import kids from "@/assets/cat-kids.jpg";
+import { categories, type CardSize } from "@/lib/categories";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -35,100 +27,6 @@ export const Route = createFileRoute("/products")({
   component: ProductsPage,
 });
 
-type CardSize = "lg" | "md" | "sm" | "tall" | "wide";
-
-type Category = {
-  number: string;
-  name: string;
-  tagline: string;
-  description: string;
-  image: string;
-  size: CardSize;
-};
-
-const categories: Category[] = [
-  {
-    number: "01",
-    name: "Lounge & Nightwear",
-    tagline: "Comfort engineered for everyday rituals",
-    description:
-      "Soft jersey, modal and brushed cotton constructions developed for premium retail loungewear and sleep programs.",
-    image: lounge,
-    size: "lg",
-  },
-  {
-    number: "02",
-    name: "Innerwear & Essentials",
-    tagline: "The foundation of modern wardrobes",
-    description:
-      "Seamless, cut-and-sew and stretch innerwear produced at scale with full vertical control over fabric and finish.",
-    image: innerwear,
-    size: "sm",
-  },
-  {
-    number: "03",
-    name: "Lingerie & Intimates",
-    tagline: "Technical lingerie, BOI-approved facility",
-    description:
-      "Polyamide and elastane intimates developed in Sri Lanka under our amanté operation — molded cups, bonded edges, micro-prints.",
-    image: lingerie,
-    size: "tall",
-  },
-  {
-    number: "04",
-    name: "Activewear & Sportswear",
-    tagline: "Performance fabrics, retail-ready finish",
-    description:
-      "Moisture management, four-way stretch and recycled polyester programs developed for global activewear brands.",
-    image: activewear,
-    size: "wide",
-  },
-  {
-    number: "05",
-    name: "Casualwear",
-    tagline: "Jersey, fleece and street-led basics",
-    description:
-      "Heavyweight cotton, French terry and printed jersey programs — the volume engine of our Bangladesh operations.",
-    image: casual,
-    size: "md",
-  },
-  {
-    number: "06",
-    name: "Denim",
-    tagline: "Indigo, washes and rigid constructions",
-    description:
-      "Full-package denim with in-house wash development, laser finishing and sustainable indigo dyeing.",
-    image: denim,
-    size: "lg",
-  },
-  {
-    number: "07",
-    name: "Swimwear",
-    tagline: "Chlorine-resistant, shape-retentive fabrics",
-    description:
-      "Bonded and sewn swimwear developed with our Chinese fabric mill — recycled nylon and polyester programs.",
-    image: swimwear,
-    size: "sm",
-  },
-  {
-    number: "08",
-    name: "True Knitwear",
-    tagline: "Whole-garment and fully-fashioned knit",
-    description:
-      "Fine-gauge and chunky knit programs from Westknit — yarn-dyed jacquards, intarsia, and sustainable wool blends.",
-    image: knitwear,
-    size: "tall",
-  },
-  {
-    number: "09",
-    name: "Kids",
-    tagline: "OEKO-TEX certified, family-safe",
-    description:
-      "Kidswear from newborn to 14 years — printed jersey, knit sets and outerwear programs with full compliance audit.",
-    image: kids,
-    size: "wide",
-  },
-];
 
 const sizeClasses: Record<CardSize, string> = {
   // outer wrapper sizes — image + name plate stack inside
@@ -183,8 +81,9 @@ function HorizontalCategories() {
               className={`group flex shrink-0 flex-col ${sizeClasses[c.size]}`}
             >
               {/* Image card — clean white background, no overlay */}
-              <a
-                href="#"
+              <Link
+                to="/products/$slug"
+                params={{ slug: c.slug }}
                 className="relative block flex-1 overflow-hidden rounded-2xl bg-white"
               >
                 <img
@@ -196,10 +95,14 @@ function HorizontalCategories() {
                 <span className="absolute left-3 top-3 rounded-full bg-background/80 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-brand backdrop-blur md:left-4 md:top-4">
                   {c.number}
                 </span>
-              </a>
+              </Link>
 
               {/* Separate dark name plate */}
-              <div className="mt-2 flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 transition-colors group-hover:border-brand/60 md:mt-3 md:px-5 md:py-3.5">
+              <Link
+                to="/products/$slug"
+                params={{ slug: c.slug }}
+                className="mt-2 flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 transition-colors hover:border-brand/60 group-hover:border-brand/60 md:mt-3 md:px-5 md:py-3.5"
+              >
                 <div className="min-w-0">
                   <h3 className="truncate text-sm font-semibold tracking-tight text-foreground md:text-[15px]">
                     {c.name}
@@ -209,7 +112,7 @@ function HorizontalCategories() {
                   </p>
                 </div>
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-brand" />
-              </div>
+              </Link>
             </article>
           ))}
 
