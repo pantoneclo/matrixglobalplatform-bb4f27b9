@@ -12,7 +12,12 @@ import {
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
-import { factories, getFactoryBySlug } from "@/lib/factories";
+import {
+  factories,
+  getFactoryBySlug,
+  type FactoryStat,
+  type FactoryCert,
+} from "@/lib/factories";
 
 export const Route = createFileRoute("/factories/$slug")({
   loader: ({ params }) => {
