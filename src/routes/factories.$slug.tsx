@@ -152,7 +152,7 @@ function FactoryDetail() {
         <section className="border-y border-border bg-surface py-12 md:py-16">
           <div className="container-x">
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
-              {factory.stats.map((s) => (
+              {factory.stats.map((s: FactoryStat) => (
                 <div
                   key={s.label}
                   className="rounded-2xl border border-border bg-card p-6 text-center transition-colors hover:border-brand/50 md:p-8"
@@ -187,13 +187,13 @@ function FactoryDetail() {
                   </div>
 
                   <div className="space-y-4 text-[15px] leading-relaxed text-muted-foreground">
-                    {factory.about.map((p, i) => (
+                    {factory.about.map((p: string, i: number) => (
                       <p key={i}>{p}</p>
                     ))}
                   </div>
 
                   <div className="mt-8 grid grid-cols-2 gap-3">
-                    {factory.productCategories.map((c) => (
+                    {factory.productCategories.map((c: string) => (
                       <div
                         key={c}
                         className="rounded-xl border border-border bg-background/60 px-4 py-3.5 text-center text-sm font-medium transition-colors hover:border-brand/60 hover:text-brand"
@@ -222,7 +222,7 @@ function FactoryDetail() {
                     </div>
 
                     <div className="grid grid-cols-3 gap-3 sm:grid-cols-3">
-                      {factory.certifications.map((c) => (
+                      {factory.certifications.map((c: FactoryCert) => (
                         <div
                           key={c.abbr}
                           title={c.name}
