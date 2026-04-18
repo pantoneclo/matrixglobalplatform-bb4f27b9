@@ -131,19 +131,12 @@ const categories: Category[] = [
 ];
 
 const sizeClasses: Record<CardSize, string> = {
-  lg: "w-[82vw] h-[78vh] md:w-[50vw] md:h-[78vh] md:self-center",
-  md: "w-[72vw] h-[60vh] md:w-[34vw] md:h-[58vh] md:self-start md:mt-[6vh]",
-  sm: "w-[62vw] h-[48vh] md:w-[24vw] md:h-[44vh] md:self-end md:mb-[6vh]",
-  tall: "w-[72vw] h-[82vh] md:w-[32vw] md:h-[82vh] md:self-center",
-  wide: "w-[88vw] h-[56vh] md:w-[58vw] md:h-[54vh] md:self-center",
-};
-
-const titleClasses: Record<CardSize, string> = {
-  lg: "text-3xl md:text-5xl",
-  md: "text-2xl md:text-4xl",
-  sm: "text-xl md:text-2xl",
-  tall: "text-3xl md:text-5xl",
-  wide: "text-3xl md:text-5xl",
+  // width / height combos chosen to create a varied editorial rhythm
+  lg: "w-[78vw] h-[72vh] md:w-[44vw] md:h-[74vh] md:self-center",
+  md: "w-[68vw] h-[58vh] md:w-[30vw] md:h-[56vh] md:self-start md:mt-[5vh]",
+  sm: "w-[58vw] h-[46vh] md:w-[22vw] md:h-[42vh] md:self-end md:mb-[5vh]",
+  tall: "w-[68vw] h-[80vh] md:w-[28vw] md:h-[80vh] md:self-center",
+  wide: "w-[84vw] h-[52vh] md:w-[50vw] md:h-[50vh] md:self-center",
 };
 
 function HorizontalCategories() {
