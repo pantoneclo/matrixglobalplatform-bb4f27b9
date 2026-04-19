@@ -315,33 +315,41 @@ function ImageTile({
 }) {
   return (
     <div
-      className={`group relative overflow-hidden rounded-xl bg-white ${className}`}
+      className={`group relative overflow-hidden rounded-2xl bg-white ring-1 ring-border/50 transition-all duration-500 hover:shadow-2xl hover:shadow-brand/10 hover:ring-brand/40 ${className}`}
     >
       <img
         src={src}
         alt={alt}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.05]"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.06]"
       />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
     </div>
   );
 }
 
-function FeatureCard({ feature }: { feature: { title: string; highlight: string; body: string } }) {
+function FeatureCard({
+  feature,
+}: {
+  feature: { title: string; highlight: string; body: string };
+}) {
   return (
-    <article className="group flex flex-col justify-between rounded-xl bg-card p-6 ring-1 ring-border transition-all hover:ring-brand/50 md:p-8">
-      <div>
-        <h3 className="text-2xl font-semibold leading-tight tracking-tight md:text-[28px]">
+    <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-card to-card/60 p-6 ring-1 ring-border transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10 hover:ring-brand/50 md:p-8">
+      <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-brand/10 opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
+      <div className="relative">
+        <h3 className="text-2xl font-semibold leading-[1.1] tracking-tight md:text-[30px]">
           {feature.title}
           <br />
           <span className="text-gradient-brand">{feature.highlight}</span>
         </h3>
+        <div className="mt-4 h-px w-10 bg-gradient-to-r from-brand to-transparent transition-all duration-500 group-hover:w-20" />
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
           {feature.body}
         </p>
       </div>
-      <div className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-brand opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        Learn more <ArrowRight className="h-3.5 w-3.5" />
+      <div className="relative mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-brand opacity-60 transition-all duration-500 group-hover:gap-3 group-hover:opacity-100">
+        Learn more
+        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
       </div>
     </article>
   );
