@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { getCategoryBySlug, categories as allCategories } from "@/lib/categories";
 
-export const Route = createFileRoute("/products/$slug")({
+export const Route = createFileRoute("/products_/$slug")({
   loader: ({ params }) => {
     const category = getCategoryBySlug(params.slug);
     if (!category) throw notFound();
