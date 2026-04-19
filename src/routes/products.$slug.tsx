@@ -72,28 +72,37 @@ function CategoryDetail() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* HERO */}
-        <section className="relative h-[78vh] min-h-[560px] w-full overflow-hidden">
+        {/* HERO — cinematic, editorial */}
+        <section className="relative h-[88vh] min-h-[620px] w-full overflow-hidden">
           <img
             src={category.heroImage}
             alt={category.name}
             width={1920}
             height={1080}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full scale-105 object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+          {/* Layered gradients for depth + readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(0,0,0,0.6),transparent_60%)]" />
 
-          <div className="container-x relative z-10 flex h-full flex-col justify-end pb-16 pt-32 md:pb-24">
+          {/* Decorative number watermark */}
+          <div className="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 select-none text-[22vw] font-bold leading-none text-foreground/[0.04] md:block">
+            {category.number}
+          </div>
+
+          <div className="container-x relative z-10 flex h-full flex-col justify-end pb-20 pt-32 md:pb-28">
             <Reveal>
               <Link
                 to="/products"
-                className="mb-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-brand"
+                className="group mb-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-brand"
               >
-                <ArrowLeft className="h-3.5 w-3.5" /> All categories ·{" "}
+                <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
+                All categories
+                <span className="mx-1 h-px w-8 bg-border" />
                 <span className="text-brand">{category.number}</span>
               </Link>
-              <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl lg:text-8xl">
+              <h1 className="max-w-5xl text-[44px] font-semibold leading-[0.98] tracking-tight md:text-[88px] lg:text-[104px]">
                 {(() => {
                   const parts = category.name.split(" & ");
                   return parts.map((part: string, i: number) => (
@@ -110,102 +119,99 @@ function CategoryDetail() {
                   ));
                 })()}
               </h1>
-              <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
+              <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
                 {category.heroIntro}
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-brand-foreground transition-all hover:bg-brand/90 hover:shadow-lg hover:shadow-brand/20"
+                  className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-brand-foreground shadow-lg shadow-brand/20 transition-all hover:-translate-y-0.5 hover:bg-brand/90 hover:shadow-xl hover:shadow-brand/30"
                 >
-                  Request Presentation <ArrowRight className="h-4 w-4" />
+                  Request Presentation
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
-                <button className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-7 py-3.5 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-brand hover:text-brand">
+                <button className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-7 py-3.5 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-brand hover:text-brand">
                   <Download className="h-4 w-4" /> Download Profile
                 </button>
               </div>
             </Reveal>
           </div>
+
+          {/* Scroll indicator */}
+          <div className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground md:flex">
+            <span>Scroll</span>
+            <span className="h-10 w-px animate-pulse bg-gradient-to-b from-brand to-transparent" />
+          </div>
         </section>
 
-        {/* ELEVATE YOUR OFFERINGS */}
-        <section className="bg-surface py-20 md:py-28">
-          <div className="container-x">
+        {/* ELEVATE YOUR OFFERINGS — premium editorial mosaic */}
+        <section className="relative bg-surface py-20 md:py-28">
+          {/* Subtle background pattern */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.06),transparent_50%)]" />
+
+          <div className="container-x relative">
             <Reveal>
               <div className="mx-auto max-w-3xl text-center">
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-brand">
-                  Why Matrix
-                </p>
-                <h2 className="text-4xl font-semibold tracking-tight md:text-5xl">
+                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/5 px-4 py-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand" />
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-brand">
+                    Why Matrix
+                  </p>
+                </div>
+                <h2 className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
                   {category.sectionTitle.split(" ").slice(0, -1).join(" ")}{" "}
                   <span className="text-gradient-brand">
                     {category.sectionTitle.split(" ").slice(-1)}
                   </span>
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
                   {category.sectionLead}
                 </p>
               </div>
             </Reveal>
 
-            {/* EDITORIAL GRID — 3 columns × 4 rows on desktop, mosaic of images + feature plates */}
-            <div className="mt-16 grid grid-cols-2 gap-4 md:mt-20 md:grid-cols-3 md:gap-5">
-              {/* ROW 1 */}
-              {/* Col 1: tall image (spans 2 rows) */}
+            {/* EDITORIAL MOSAIC — refined 3-col grid with consistent rhythm */}
+            <div className="mt-14 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-3 md:gap-5">
+              {/* Row 1 */}
               <ImageTile
                 src={g1}
                 alt={`${category.name} look 1`}
                 className="row-span-2 aspect-[3/5]"
               />
-
-              {/* Col 2: feature card */}
               <FeatureCard feature={category.features[0]} />
-
-              {/* Col 3: image */}
               <ImageTile
                 src={g3}
                 alt={`${category.name} look 2`}
                 className="aspect-[4/5]"
               />
 
-              {/* ROW 2 */}
-              {/* Col 2: image */}
+              {/* Row 2 */}
               <ImageTile
                 src={g2}
                 alt={`${category.name} look 3`}
                 className="aspect-[4/5]"
               />
-
-              {/* Col 3: feature card */}
               <FeatureCard feature={category.features[1]} />
 
-              {/* ROW 3 */}
-              {/* Col 1: tall image (spans 2 rows) */}
+              {/* Row 3 */}
               <ImageTile
                 src={g4}
                 alt={`${category.name} look 4`}
                 className="row-span-2 aspect-[3/5]"
               />
-
-              {/* Col 2: feature card */}
               <FeatureCard feature={category.features[2]} />
-
-              {/* Col 3: image */}
               <ImageTile
                 src={g5}
                 alt={`${category.name} look 5`}
                 className="aspect-[4/5]"
               />
 
-              {/* ROW 4 */}
-              {/* Col 2: image */}
+              {/* Row 4 */}
               <ImageTile
                 src={g6}
                 alt={`${category.name} look 6`}
                 className="aspect-[4/5]"
               />
-
-              {/* Col 3: feature card */}
               <FeatureCard feature={category.features[3]} />
             </div>
           </div>
@@ -309,33 +315,41 @@ function ImageTile({
 }) {
   return (
     <div
-      className={`group relative overflow-hidden rounded-xl bg-white ${className}`}
+      className={`group relative overflow-hidden rounded-2xl bg-white ring-1 ring-border/50 transition-all duration-500 hover:shadow-2xl hover:shadow-brand/10 hover:ring-brand/40 ${className}`}
     >
       <img
         src={src}
         alt={alt}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.05]"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.06]"
       />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
     </div>
   );
 }
 
-function FeatureCard({ feature }: { feature: { title: string; highlight: string; body: string } }) {
+function FeatureCard({
+  feature,
+}: {
+  feature: { title: string; highlight: string; body: string };
+}) {
   return (
-    <article className="group flex flex-col justify-between rounded-xl bg-card p-6 ring-1 ring-border transition-all hover:ring-brand/50 md:p-8">
-      <div>
-        <h3 className="text-2xl font-semibold leading-tight tracking-tight md:text-[28px]">
+    <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-card to-card/60 p-6 ring-1 ring-border transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10 hover:ring-brand/50 md:p-8">
+      <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-brand/10 opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
+      <div className="relative">
+        <h3 className="text-2xl font-semibold leading-[1.1] tracking-tight md:text-[30px]">
           {feature.title}
           <br />
           <span className="text-gradient-brand">{feature.highlight}</span>
         </h3>
+        <div className="mt-4 h-px w-10 bg-gradient-to-r from-brand to-transparent transition-all duration-500 group-hover:w-20" />
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
           {feature.body}
         </p>
       </div>
-      <div className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-brand opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        Learn more <ArrowRight className="h-3.5 w-3.5" />
+      <div className="relative mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-brand opacity-60 transition-all duration-500 group-hover:gap-3 group-hover:opacity-100">
+        Learn more
+        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
       </div>
     </article>
   );
