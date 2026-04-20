@@ -1,164 +1,174 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { MapPin, ArrowUpRight, ArrowRight } from "lucide-react";
-import bangladeshImg from "@/assets/bangladesh.jpg";
-import srilankaImg from "@/assets/srilanka.jpg";
+import {
+  Factory,
+  MapPin,
+  Users,
+  Award,
+  ArrowUpRight,
+  ChevronRight,
+} from "lucide-react";
+import manufacturingHero from "@/assets/manufacturing-hero.jpg";
 
-type FactoryUnit = { name: string; slug: string; tag?: string };
+type FactoryUnit = { name: string; slug: string };
 
-type Unit = {
+type Country = {
   id: string;
+  code: string;
   country: string;
-  flag: string;
+  accent: string; // tailwind classes for the badge
   description: string;
-  image: string;
   units: FactoryUnit[];
 };
 
-const data: Unit[] = [
+const countries: Country[] = [
   {
     id: "bd",
+    code: "BD",
     country: "Bangladesh",
-    flag: "🇧🇩",
+    accent: "bg-emerald-500/15 text-emerald-400 ring-emerald-500/30",
     description:
-      "High-volume manufacturing across knit and woven programs with vertically integrated capability.",
-    image: bangladeshImg,
+      "High-volume manufacturing across knit and woven programs with state-of-the-art facilities.",
     units: [
-      { name: "Matrix Apparels Ltd", slug: "matrix-apparels", tag: "Built from scratch" },
-      { name: "MB Knit Fashion", slug: "mb-knit-fashion", tag: "Est. 1992 · LPP A-Rated" },
-      { name: "Westknit", slug: "westknit", tag: "Knit specialist" },
-      { name: "IFS Texwear Ltd", slug: "ifs-texwear", tag: "80 lines · 20 tons/day" },
-      { name: "Lithe Group", slug: "lithe-group", tag: "Partner factory" },
+      { name: "Matrix Apparels Ltd", slug: "matrix-apparels" },
+      { name: "IFS Texwear Ltd", slug: "ifs-texwear" },
+      { name: "MB Knit Fashion", slug: "mb-knit-fashion" },
+      { name: "Lithe Group", slug: "lithe-group" },
+      { name: "Westknit", slug: "westknit" },
     ],
   },
   {
     id: "lk",
+    code: "LK",
     country: "Sri Lanka",
-    flag: "🇱🇰",
+    accent: "bg-amber-500/15 text-amber-400 ring-amber-500/30",
     description:
       "Technical lingerie and polyamide product capability with BOI-approved manufacturing strength.",
-    image: srilankaImg,
-    units: [{ name: "Amanté Brand", slug: "amante", tag: "Lingerie · Intimates" }],
+    units: [{ name: "Amanté Brand", slug: "amante" }],
   },
 ];
 
-export function Manufacturing() {
-  const [active, setActive] = useState<Unit>(data[0]);
+const stats = [
+  { icon: MapPin, value: "2", label: "Countries" },
+  { icon: Factory, value: "6", label: "Facilities" },
+  { icon: Users, value: "5000+", label: "Workers" },
+  { icon: Award, value: "15+", label: "Certifications" },
+];
 
+export function Manufacturing() {
   return (
-    <section className="relative bg-surface py-24 md:py-32">
+    <section className="relative overflow-hidden bg-background py-24 md:py-32">
+      {/* Background image with heavy overlay */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={manufacturingHero}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          width={1920}
+          height={1080}
+          className="h-full w-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+      </div>
+
       <div className="container-x">
+        {/* Header */}
         <Reveal>
-          <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <div className="max-w-2xl">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-brand">
-                Own Manufacturing Units
-              </p>
-              <h2 className="text-4xl font-semibold tracking-tight md:text-5xl">
-                Backed by <span className="text-gradient-brand">Real Strength.</span>
-              </h2>
+          <div className="mb-12 max-w-3xl">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-4 py-1.5 backdrop-blur">
+              <Factory className="h-3.5 w-3.5 text-brand" />
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">
+                Own Manufacturing Unit
+              </span>
             </div>
-            <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-              Strategically located manufacturing units across South Asia, built to
-              deliver consistent quality, scalable capacity, and reliable
-              performance.
+            <h2 className="text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+              Backed by real{" "}
+              <span className="text-gradient-brand">Production strength</span>
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              Strategic manufacturing facilities across South Asia delivering
+              quality, capacity, and reliability.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
-          {/* Selector */}
-          <div className="space-y-3">
-            {data.map((u) => {
-              const isActive = active.id === u.id;
-              return (
-                <button
-                  key={u.id}
-                  onClick={() => setActive(u)}
-                  className={`group flex w-full items-center justify-between rounded-2xl border p-6 text-left transition-all duration-500 ${
-                    isActive
-                      ? "border-brand/50 bg-card shadow-card"
-                      : "border-border bg-card/40 hover:border-border hover:bg-card"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{u.flag}</span>
-                      <h3 className="text-xl font-semibold">{u.country}</h3>
-                    </div>
-                    <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                      {u.description}
-                    </p>
-                    <div className="mt-3 text-xs text-brand">
-                      {u.units.length} {u.units.length === 1 ? "unit" : "units"}
-                    </div>
+        {/* Stat strip */}
+        <Reveal delay={0.1}>
+          <div className="mb-10 flex flex-wrap items-center gap-x-10 gap-y-6">
+            {stats.map((s) => (
+              <div key={s.label} className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/15 ring-1 ring-brand/30 backdrop-blur">
+                  <s.icon className="h-5 w-5 text-brand" />
+                </div>
+                <div className="leading-tight">
+                  <div className="text-2xl font-semibold">{s.value}</div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                    {s.label}
                   </div>
-                  <ArrowUpRight
-                    className={`h-5 w-5 transition-all ${
-                      isActive ? "text-brand" : "text-muted-foreground"
-                    } group-hover:translate-x-0.5 group-hover:-translate-y-0.5`}
-                  />
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Detail */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5 }}
-              className="overflow-hidden rounded-2xl border border-border bg-card shadow-elegant"
-            >
-              <div className="relative h-72 overflow-hidden">
-                <img
-                  src={active.image}
-                  alt={`${active.country} manufacturing facility`}
-                  loading="lazy"
-                  width={1280}
-                  height={896}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
-                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1.5 text-xs backdrop-blur">
-                  <MapPin className="h-3 w-3 text-brand" /> {active.country}
                 </div>
               </div>
-              <div className="p-6">
-                <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-                  Our Units
-                </h4>
-                <ul className="space-y-1">
-                  {active.units.map((u) => (
-                    <li key={u.slug}>
-                      <Link
-                        to="/factories/$slug"
-                        params={{ slug: u.slug }}
-                        className="group/row flex items-center justify-between gap-3 rounded-lg border-b border-border px-1 py-3 transition-colors last:border-0 hover:border-brand/40 hover:bg-brand/5 hover:px-3"
-                      >
-                        <span className="font-medium transition-colors group-hover/row:text-brand">
-                          {u.name}
-                        </span>
-                        <span className="flex items-center gap-2">
-                          {u.tag && (
-                            <span className="text-xs text-muted-foreground">
-                              {u.tag}
-                            </span>
-                          )}
-                          <ArrowRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition-all group-hover/row:translate-x-0.5 group-hover/row:text-brand group-hover/row:opacity-100" />
-                        </span>
-                      </Link>
-                    </li>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* Country panels */}
+        <div className="grid gap-6 lg:grid-cols-2">
+          {countries.map((c, idx) => (
+            <Reveal key={c.id} delay={0.15 + idx * 0.1}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="group relative h-full overflow-hidden rounded-3xl border border-border/60 bg-card/60 p-7 shadow-elegant backdrop-blur-xl transition-colors hover:border-brand/40 md:p-8"
+              >
+                {/* Subtle hover glow */}
+                <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-brand/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+
+                {/* Header row */}
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold ring-1 ${c.accent}`}
+                    >
+                      {c.code}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
+                        {c.country}
+                      </h3>
+                      <div className="mt-1 text-xs text-muted-foreground">
+                        {c.units.length}{" "}
+                        {c.units.length === 1 ? "facility" : "facilities"}
+                      </div>
+                    </div>
+                  </div>
+                  <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-brand" />
+                </div>
+
+                {/* Description */}
+                <p className="mb-6 max-w-md text-sm leading-relaxed text-muted-foreground">
+                  {c.description}
+                </p>
+
+                {/* Factory chips — clickable */}
+                <div className="flex flex-wrap gap-2">
+                  {c.units.map((u) => (
+                    <Link
+                      key={u.slug}
+                      to="/factories/$slug"
+                      params={{ slug: u.slug }}
+                      className="group/chip relative inline-flex items-center gap-1.5 overflow-hidden rounded-lg border border-border/70 bg-background/40 px-3.5 py-2 text-sm font-medium text-foreground/90 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:bg-brand/10 hover:text-brand hover:shadow-[0_8px_20px_-8px] hover:shadow-brand/40"
+                    >
+                      <span className="relative z-10">{u.name}</span>
+                      <ArrowUpRight className="relative z-10 h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all duration-300 group-hover/chip:translate-x-0 group-hover/chip:opacity-100" />
+                    </Link>
                   ))}
-                </ul>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                </div>
+              </motion.div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
