@@ -17,6 +17,7 @@ type Country = {
   id: string;
   code: string;
   country: string;
+  flag: string;
   accent: string; // tailwind classes for the badge
   description: string;
   units: FactoryUnit[];
@@ -27,7 +28,8 @@ const countries: Country[] = [
     id: "bd",
     code: "BD",
     country: "Bangladesh",
-    accent: "bg-emerald-500/15 text-emerald-400 ring-emerald-500/30",
+    flag: "🇧🇩",
+    accent: "bg-emerald-500/15 text-emerald-300 ring-emerald-400/40",
     description:
       "High-volume manufacturing across knit and woven programs with state-of-the-art facilities.",
     units: [
@@ -42,7 +44,8 @@ const countries: Country[] = [
     id: "lk",
     code: "LK",
     country: "Sri Lanka",
-    accent: "bg-amber-500/15 text-amber-400 ring-amber-500/30",
+    flag: "🇱🇰",
+    accent: "bg-amber-500/15 text-amber-300 ring-amber-400/40",
     description:
       "Technical lingerie and polyamide product capability with BOI-approved manufacturing strength.",
     units: [{ name: "Amanté Brand", slug: "amante" }],
@@ -58,8 +61,8 @@ const stats = [
 
 export function Manufacturing() {
   return (
-    <section className="relative overflow-hidden bg-background py-24 md:py-32">
-      {/* Background image with heavy overlay */}
+    <section className="relative overflow-hidden py-24 md:py-32">
+      {/* Background image with rich overlays (no pure black) */}
       <div className="absolute inset-0 -z-10">
         <img
           src={manufacturingHero}
@@ -68,10 +71,19 @@ export function Manufacturing() {
           loading="lazy"
           width={1920}
           height={1080}
-          className="h-full w-full object-cover opacity-30"
+          className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+        {/* Brand-tinted wash so it never feels flat black */}
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--background)/0.92),hsl(var(--background)/0.75)_45%,hsl(var(--brand)/0.25))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,hsl(var(--brand)/0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(var(--brand)/0.12),transparent_60%)]" />
+        <div
+          className="absolute inset-0 opacity-[0.04] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+        />
       </div>
 
       <div className="container-x">
@@ -130,9 +142,15 @@ export function Manufacturing() {
                 <div className="mb-5 flex items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold ring-1 ${c.accent}`}
+                      className={`relative flex h-14 w-14 items-center justify-center rounded-full text-2xl ring-1 shadow-inner ${c.accent}`}
+                      aria-label={`${c.country} flag`}
                     >
-                      {c.code}
+                      <span className="leading-none drop-shadow-sm">
+                        {c.flag}
+                      </span>
+                      <span className="absolute -bottom-1 -right-1 rounded-md bg-background/80 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-foreground ring-1 ring-border/60 backdrop-blur">
+                        {c.code}
+                      </span>
                     </div>
                     <div>
                       <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
