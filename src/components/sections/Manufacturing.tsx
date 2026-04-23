@@ -69,6 +69,7 @@ export function Manufacturing() {
           alt=""
           aria-hidden
           loading="lazy"
+          decoding="async"
           width={1920}
           height={1080}
           className="h-full w-full object-cover"
@@ -96,11 +97,11 @@ export function Manufacturing() {
                 Own Manufacturing Unit
               </span>
             </div>
-            <h2 className="text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+            <h2 className="text-section-title font-semibold text-foreground">
               Backed by real{" "}
               <span className="text-gradient-brand">Production strength</span>
             </h2>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
               Strategic manufacturing facilities across South Asia delivering
               quality, capacity, and reliability.
             </p>

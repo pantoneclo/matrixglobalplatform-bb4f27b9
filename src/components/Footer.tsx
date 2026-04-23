@@ -34,7 +34,7 @@ const cols = [
 export function Footer() {
   return (
     <footer className="relative border-t border-border bg-surface">
-      <div className="container-x grid gap-12 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="container-x grid gap-10 py-12 sm:gap-12 sm:py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="space-y-5">
           <div className="flex items-center gap-3">
             <svg viewBox="0 0 48 48" className="h-9 w-9 text-brand" fill="none" aria-hidden="true">
@@ -59,25 +59,27 @@ export function Footer() {
           </a>
         </div>
 
-        {cols.map((col) => (
-          <div key={col.title}>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-              {col.title}
-            </h4>
-            <ul className="space-y-3 text-sm">
-              {col.links.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    to={l.to}
-                    className="text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:contents">
+          {cols.map((col) => (
+            <div key={col.title}>
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+                {col.title}
+              </h4>
+              <ul className="space-y-3 text-sm">
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <Link
+                      to={l.to}
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="border-t border-border">
