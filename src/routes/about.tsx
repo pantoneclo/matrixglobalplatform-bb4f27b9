@@ -32,15 +32,15 @@ function AboutPage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <section className="relative pt-40 pb-20 md:pt-48">
+        <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 md:pt-48">
           <div className="container-x">
             <Reveal>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-brand">Who We Are</p>
-              <h1 className="max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
+              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-brand sm:text-xs sm:tracking-[0.3em]">Who We Are</p>
+              <h1 className="max-w-4xl text-display font-semibold">
                 Built to manufacture.{" "}
                 <span className="text-gradient-brand">Structured to deliver.</span>
               </h1>
-              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground sm:mt-8 sm:text-lg">
                 Matrix Apparels began with a single factory in Dhaka. Today, we operate an
                 integrated manufacturing group spanning Bangladesh, China and Sri Lanka, with
                 trade finance in Hong Kong and a European base in Slovenia. We are not an
