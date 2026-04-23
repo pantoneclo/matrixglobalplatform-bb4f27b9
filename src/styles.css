@@ -52,8 +52,9 @@
   --background: oklch(0.18 0.005 240);
   --foreground: oklch(0.98 0.003 240);
 
-  --surface: oklch(0.93 0.004 240);          /* light section bg per PDF */
-  --surface-elevated: oklch(0.22 0.006 240);
+  /* Dark surfaces — used for alternating sections on dark theme */
+  --surface: oklch(0.205 0.006 240);          /* slightly lifted from background */
+  --surface-elevated: oklch(0.235 0.007 240); /* cards & elevated panels */
 
   --card: oklch(0.21 0.006 240);
   --card-foreground: oklch(0.98 0.003 240);
@@ -120,7 +121,29 @@
 
 @layer utilities {
   .container-x {
-    @apply mx-auto w-full max-w-7xl px-6 lg:px-10;
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-10;
+  }
+
+  /* Thumb-friendly tap target — 44px minimum on mobile */
+  .tap-target {
+    @apply min-h-[44px];
+  }
+
+  /* Fluid display typography to prevent overflow on small screens */
+  .text-display {
+    font-size: clamp(2.25rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .text-display-lg {
+    font-size: clamp(2.5rem, 8vw, 6.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+  }
+  .text-section-title {
+    font-size: clamp(1.875rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
 
   .text-gradient-brand {

@@ -11,18 +11,18 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="relative border-y border-border bg-surface py-20 md:py-28">
+    <section className="relative border-y border-border bg-surface py-16 sm:py-20 md:py-28">
       <div
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{ background: "var(--gradient-radial)" }}
       />
       <div className="container-x relative">
         <Reveal>
-          <div className="mb-14 max-w-2xl">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-brand">
+          <div className="mb-10 max-w-2xl sm:mb-14">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-brand sm:text-xs sm:tracking-[0.3em]">
               Vertically Integrated Partner
             </p>
-            <h2 className="text-4xl font-semibold tracking-tight md:text-5xl">
+            <h2 className="text-section-title font-semibold text-foreground">
               Built on real scale,
               <br />
               not promises.
@@ -33,8 +33,8 @@ export function Stats() {
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3 lg:grid-cols-5">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08}>
-              <div className="group relative h-full bg-card p-8 transition-colors hover:bg-surface-elevated">
-                <div className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+              <div className="group relative h-full bg-card p-6 transition-colors hover:bg-surface-elevated sm:p-8">
+                <div className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
                   <Counter value={s.value} suffix={s.suffix} />
                 </div>
                 <div className="mt-3 text-sm font-medium text-foreground">
