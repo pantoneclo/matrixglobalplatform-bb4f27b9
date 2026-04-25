@@ -25,8 +25,8 @@ const cols = [
     links: [
       { label: "Sustainability", to: "/sustainability" },
       { label: "Certifications", to: "/sustainability" },
+      { label: "Code of Conduct", to: "/code-of-conduct" },
       { label: "Case Studies", to: "/brands" },
-      { label: "Download Profile", to: "/contact" },
     ],
   },
 ] as const;
