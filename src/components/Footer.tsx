@@ -25,8 +25,8 @@ const cols = [
     links: [
       { label: "Sustainability", to: "/sustainability" },
       { label: "Certifications", to: "/sustainability" },
+      { label: "Code of Conduct", to: "/code-of-conduct" },
       { label: "Case Studies", to: "/brands" },
-      { label: "Download Profile", to: "/contact" },
     ],
   },
 ] as const;
@@ -84,9 +84,17 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="container-x flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-          <p className="text-xs text-muted-foreground">
-            © 2026 Matrix Platform. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+            <p className="text-xs text-muted-foreground">
+              © 2026 Matrix Platform. All rights reserved.
+            </p>
+            <Link
+              to="/code-of-conduct"
+              className="text-xs text-muted-foreground transition-colors hover:text-brand"
+            >
+              Code of Conduct & Ethical Policy
+            </Link>
+          </div>
           <div className="flex items-center gap-3 text-muted-foreground">
             {[Linkedin, Twitter, Instagram, Youtube].map((Icon, i) => (
               <a
