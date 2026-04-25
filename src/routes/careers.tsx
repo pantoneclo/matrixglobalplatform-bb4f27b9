@@ -19,6 +19,7 @@ import {
   FileText,
   Sparkles,
 } from "lucide-react";
+import careersHero from "@/assets/careers-hero.jpg";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
