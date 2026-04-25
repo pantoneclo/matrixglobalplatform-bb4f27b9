@@ -226,6 +226,27 @@ function CareersPage() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden pt-32 pb-14 sm:pt-40 sm:pb-20 md:pt-48">
+          {/* Background image */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-20">
+            <img
+              src={careersHero}
+              alt=""
+              width={1920}
+              height={1080}
+              fetchPriority="high"
+              decoding="async"
+              className="h-full w-full object-cover object-center opacity-25"
+            />
+            {/* Dark fade for legibility */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, hsl(var(--background) / 0.85) 0%, hsl(var(--background) / 0.7) 40%, hsl(var(--background) / 0.95) 100%)",
+              }}
+            />
+          </div>
+          {/* Brand radial accent */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10"
@@ -234,6 +255,7 @@ function CareersPage() {
                 "radial-gradient(ellipse 80% 60% at 50% 0%, hsl(var(--brand) / 0.18), transparent 60%)",
             }}
           />
+
           <div className="container-x">
             <Reveal>
               <Link
