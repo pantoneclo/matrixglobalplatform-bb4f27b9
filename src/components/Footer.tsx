@@ -7,7 +7,7 @@ const cols = [
     links: [
       { label: "About Us", to: "/about" },
       { label: "Our Team", to: "/about" },
-      { label: "Careers", to: "/about" },
+      { label: "Careers", to: "/careers" },
       { label: "News", to: "/about" },
     ],
   },
