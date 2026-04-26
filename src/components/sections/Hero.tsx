@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
+import { DownloadGateModal } from "@/components/DownloadGateModal";
 
 export function Hero() {
+  const [downloadOpen, setDownloadOpen] = useState(false);
   return (
     <section className="relative isolate min-h-screen overflow-hidden">
       {/* Background image with slow zoom */}
@@ -45,12 +48,13 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <a
-              href="#contact"
+            <button
+              type="button"
+              onClick={() => setDownloadOpen(true)}
               className="tap-target group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-brand-foreground shadow-glow transition-transform hover:scale-[1.02] sm:px-7 sm:py-3.5"
             >
               <Download className="h-4 w-4" /> Download Profile
-            </a>
+            </button>
             <a
               href="#contact"
               className="tap-target group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-foreground/40 hover:bg-foreground/10 sm:px-7 sm:py-3.5"
@@ -84,6 +88,12 @@ export function Hero() {
           ))}
         </motion.div>
       </div>
+
+      <DownloadGateModal
+        open={downloadOpen}
+        onClose={() => setDownloadOpen(false)}
+        resourceTitle="Matrix Group Company Profile"
+      />
     </section>
   );
 }

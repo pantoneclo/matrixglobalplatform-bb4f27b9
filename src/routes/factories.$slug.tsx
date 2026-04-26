@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -12,6 +13,7 @@ import {
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
+import { DownloadGateModal } from "@/components/DownloadGateModal";
 import {
   factories,
   getFactoryBySlug,
@@ -84,6 +86,7 @@ function FactoryDetail() {
   const nameParts = factory.name.split(" ");
   const lastWord = nameParts[nameParts.length - 1];
   const leadWords = nameParts.slice(0, -1).join(" ");
+  const [downloadOpen, setDownloadOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -134,7 +137,11 @@ function FactoryDetail() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <button className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-brand-foreground transition-all hover:bg-brand/90 hover:shadow-lg hover:shadow-brand/20">
+                <button
+                  type="button"
+                  onClick={() => setDownloadOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-brand-foreground transition-all hover:bg-brand/90 hover:shadow-lg hover:shadow-brand/20"
+                >
                   <Download className="h-4 w-4" /> Download Profile
                 </button>
                 <Link
@@ -352,6 +359,12 @@ function FactoryDetail() {
         </section>
       </main>
       <Footer />
+
+      <DownloadGateModal
+        open={downloadOpen}
+        onClose={() => setDownloadOpen(false)}
+        resourceTitle={`${factory.name} — Factory Profile`}
+      />
     </div>
   );
 }
