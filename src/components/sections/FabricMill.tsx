@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import fabricMill from "@/assets/fabric-mill.jpg";
+import { DownloadGateModal } from "@/components/DownloadGateModal";
 
 export function FabricMill() {
+  const [downloadOpen, setDownloadOpen] = useState(false);
   return (
     <section className="relative py-24 md:py-32">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
@@ -58,15 +61,22 @@ export function FabricMill() {
               ))}
             </div>
 
-            <a
-              href="#contact"
+            <button
+              type="button"
+              onClick={() => setDownloadOpen(true)}
               className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-brand transition-all hover:gap-3"
             >
               Download Mill Profile <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </button>
           </div>
         </Reveal>
       </div>
+
+      <DownloadGateModal
+        open={downloadOpen}
+        onClose={() => setDownloadOpen(false)}
+        resourceTitle="Zhejiang Monalisa Textile — Mill Profile"
+      />
     </section>
   );
 }
