@@ -235,14 +235,21 @@ function CareersPage() {
               height={1080}
               fetchPriority="high"
               decoding="async"
-              className="h-full w-full object-cover object-center opacity-25"
+              className="h-full w-full object-cover object-center opacity-70"
             />
-            {/* Dark fade for legibility */}
+            {/* Dark overlays — ensure text legibility while keeping image visible */}
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, hsl(var(--background) / 0.85) 0%, hsl(var(--background) / 0.7) 40%, hsl(var(--background) / 0.95) 100%)",
+                  "linear-gradient(180deg, oklch(0.18 0.005 240 / 0.55) 0%, oklch(0.18 0.005 240 / 0.65) 55%, oklch(0.18 0.005 240 / 0.95) 100%)",
+              }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, oklch(0.18 0.005 240 / 0.6) 0%, oklch(0.18 0.005 240 / 0.2) 50%, oklch(0.18 0.005 240 / 0.4) 100%)",
               }}
             />
           </div>
