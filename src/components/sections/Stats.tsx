@@ -2,11 +2,11 @@ import { Counter } from "@/components/Counter";
 import { Reveal } from "@/components/Reveal";
 
 const stats = [
-  { value: 5, suffix: "+", label: "Manufacturing Units", sub: "Across 3 Countries" },
-  { value: 37, label: "Partner Factories", sub: "In Our Sourcing Network" },
-  { value: 3, suffix: "M+", label: "Garments Produced", sub: "Per Month" },
+  { value: 5, suffix: "+", label: "Owned Manufacturing Units", sub: "Across 3 Countries" },
+  { value: 3, suffix: "M+", label: "Garments / Month", sub: "Under Direct Control" },
   { value: 100, suffix: "+", label: "Professionals", sub: "Across 4 Regions" },
   { value: 15, suffix: "+", label: "Certifications", sub: "International Standards" },
+  { value: 0, prefix: "HSBC", label: "Backed Trade Finance", sub: "FOB & DDP — EU · UK · USA" },
 ];
 
 export function Stats() {

@@ -72,10 +72,10 @@ export function Hero() {
           className="mt-14 grid grid-cols-2 gap-x-4 gap-y-6 border-t border-foreground/10 pt-6 sm:mt-20 sm:grid-cols-4 sm:gap-6 sm:pt-8"
         >
           {[
-            { k: "3", v: "Countries" },
             { k: "5+", v: "Owned Units" },
-            { k: "37", v: "Partner Factories" },
-            { k: "DDP", v: "EU · UK · USA" },
+            { k: "3M+", v: "Garments / Month" },
+            { k: "HSBC", v: "Backed Trade Finance" },
+            { k: "FOB · DDP", v: "EU · UK · USA" },
           ].map((s) => (
             <div key={s.v}>
               <div className="text-2xl font-semibold text-foreground md:text-3xl">
