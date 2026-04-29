@@ -11,7 +11,7 @@ const products = [
   { id: "fw", title: "Fashionwear", subtitle: "Editorial · Womenswear", image: fashionImg },
   { id: "ow", title: "Outerwear", subtitle: "Jackets · Coats", image: outerImg },
   { id: "bw", title: "Bottomwear", subtitle: "Denim · Trousers", image: bottomImg },
-  { id: "cw", title: "Casualwear", subtitle: "Jersey · Streetwear", image: casualImg },
+  { id: "cw", title: "Sweatshirts & Fleece", subtitle: "Jersey · Streetwear", image: casualImg },
   { id: "lw", title: "Lounge & Nightwear", subtitle: "Comfort essentials", image: fashionImg },
   { id: "ac", title: "Activewear", subtitle: "Performance fabrics", image: outerImg },
 ];
