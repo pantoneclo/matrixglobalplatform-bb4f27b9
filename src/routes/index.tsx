@@ -20,13 +20,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Vertically integrated apparel manufacturing across China, Bangladesh and Sri Lanka. 5+ owned units, 37 partner factories, 3M+ garments per month with full DDP delivery.",
+          "Vertically integrated, owner-led apparel manufacturing across China, Bangladesh and Sri Lanka. 5+ owned units, 3M+ garments per month, HSBC-backed trade finance, full FOB and DDP delivery to EU, UK and USA.",
       },
       { property: "og:title", content: "Matrix Platform — Global Apparel Manufacturing" },
       {
         property: "og:description",
         content:
-          "Three countries. One integrated supply chain. Fabric, manufacturing and DDP delivery to EU, UK and USA.",
+          "Owned manufacturing. Owned fabric mill. HSBC-backed trade finance. FOB and DDP delivery to EU, UK and USA.",
       },
     ],
   }),

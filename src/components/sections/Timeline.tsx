@@ -37,8 +37,8 @@ const milestones = [
   {
     year: "2024—25",
     title: "Group Expansion",
-    short: "5+ owned units, 37 partner factories.",
-    long: "Sri Lanka operations, MB Knit Fashion, IFS Texwear, Westknit and Lithe Group bring 3M+ garments per month under one integrated platform.",
+    short: "5+ owned units, 3M+ garments / month.",
+    long: "Sri Lanka operations, MB Knit Fashion, IFS Texwear, Westknit and Lithe Group bring 3M+ garments per month under one owned, integrated platform — extended by a vetted partner network for capacity flex.",
   },
 ];
 
