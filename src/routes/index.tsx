@@ -40,6 +40,7 @@ function Index() {
       <Header />
       <main>
         <Hero />
+        <ProofStrip />
         <Stats />
         <FabricMill />
         <Manufacturing />
