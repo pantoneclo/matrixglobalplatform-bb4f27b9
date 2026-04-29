@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import wwdHero from "@/assets/wwd-hero.jpg";
 import wwdDesign from "@/assets/wwd-design.jpg";
@@ -14,6 +16,8 @@ type Row = {
   imageAlt: string;
   imageLeft: boolean; // true = image on left, text on right
   accentSide: "left" | "right";
+  ctaLabel?: string;
+  ctaTo?: string;
 };
 
 const rows: Row[] = [
@@ -28,14 +32,16 @@ const rows: Row[] = [
     accentSide: "left",
   },
   {
-    chip: "Compliance Goal",
+    chip: "Certified Excellence",
     titleTop: "Audit",
     titleAccent: "Ready",
-    desc: "Compliance isn't a goal, it's our foundation. Ethical sourcing and safety standards ready from day one.",
+    desc: "Compliance is our foundation, not a checkbox. BSCI, OEKO-TEX, GOTS, GRS and Sedex audited across owned facilities — proof available on request.",
     image: wwdFabric,
     imageAlt: "Stacked rolls of colorful fabric",
     imageLeft: true,
     accentSide: "right",
+    ctaLabel: "View certifications",
+    ctaTo: "/sustainability",
   },
   {
     chip: "Our Brand",
