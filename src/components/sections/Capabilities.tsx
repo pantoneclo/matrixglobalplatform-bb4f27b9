@@ -140,6 +140,17 @@ function FeatureRow({ row, index }: { row: Row; index: number }) {
         <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
           {row.desc}
         </p>
+        {row.ctaTo && row.ctaLabel && (
+          <div className={`mt-6 ${row.accentSide === "right" ? "md:text-right" : ""}`}>
+            <Link
+              to={row.ctaTo}
+              className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand hover:bg-brand/20"
+            >
+              {row.ctaLabel}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </Reveal>
   );
