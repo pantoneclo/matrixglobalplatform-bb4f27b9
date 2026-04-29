@@ -35,7 +35,11 @@ export function Stats() {
             <Reveal key={s.label} delay={i * 0.08}>
               <div className="group relative h-full bg-card p-6 transition-colors hover:bg-surface-elevated sm:p-8">
                 <div className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                  <Counter value={s.value} suffix={s.suffix} />
+                  {"kind" in s && s.kind === "text" ? (
+                    <span>{s.text}</span>
+                  ) : (
+                    <Counter value={s.value} suffix={s.suffix} />
+                  )}
                 </div>
                 <div className="mt-3 text-sm font-medium text-foreground">
                   {s.label}
