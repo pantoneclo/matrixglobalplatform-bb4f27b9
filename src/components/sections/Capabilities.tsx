@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import wwdHero from "@/assets/wwd-hero.jpg";
 import wwdDesign from "@/assets/wwd-design.jpg";
@@ -14,6 +16,8 @@ type Row = {
   imageAlt: string;
   imageLeft: boolean; // true = image on left, text on right
   accentSide: "left" | "right";
+  ctaLabel?: string;
+  ctaTo?: string;
 };
 
 const rows: Row[] = [
@@ -28,14 +32,16 @@ const rows: Row[] = [
     accentSide: "left",
   },
   {
-    chip: "Compliance Goal",
+    chip: "Certified Excellence",
     titleTop: "Audit",
     titleAccent: "Ready",
-    desc: "Compliance isn't a goal, it's our foundation. Ethical sourcing and safety standards ready from day one.",
+    desc: "Compliance is our foundation, not a checkbox. BSCI, OEKO-TEX, GOTS, GRS and Sedex audited across owned facilities — proof available on request.",
     image: wwdFabric,
     imageAlt: "Stacked rolls of colorful fabric",
     imageLeft: true,
     accentSide: "right",
+    ctaLabel: "View certifications",
+    ctaTo: "/sustainability",
   },
   {
     chip: "Our Brand",
@@ -134,6 +140,17 @@ function FeatureRow({ row, index }: { row: Row; index: number }) {
         <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
           {row.desc}
         </p>
+        {row.ctaTo && row.ctaLabel && (
+          <div className={`mt-6 ${row.accentSide === "right" ? "md:text-right" : ""}`}>
+            <Link
+              to={row.ctaTo}
+              className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand hover:bg-brand/20"
+            >
+              {row.ctaLabel}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </Reveal>
   );

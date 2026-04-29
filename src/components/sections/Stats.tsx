@@ -1,12 +1,20 @@
 import { Counter } from "@/components/Counter";
 import { Reveal } from "@/components/Reveal";
 
-const stats = [
-  { value: 5, suffix: "+", label: "Manufacturing Units", sub: "Across 3 Countries" },
-  { value: 37, label: "Partner Factories", sub: "In Our Sourcing Network" },
-  { value: 3, suffix: "M+", label: "Garments Produced", sub: "Per Month" },
+type Stat = {
+  value: number;
+  suffix?: string;
+  text?: string;
+  label: string;
+  sub: string;
+};
+
+const stats: Stat[] = [
+  { value: 5, suffix: "+", label: "Owned Manufacturing Units", sub: "Across 3 Countries" },
+  { value: 3, suffix: "M+", label: "Garments / Month", sub: "Under Direct Control" },
   { value: 100, suffix: "+", label: "Professionals", sub: "Across 4 Regions" },
   { value: 15, suffix: "+", label: "Certifications", sub: "International Standards" },
+  { value: 0, text: "HSBC", label: "Backed Trade Finance", sub: "FOB & DDP — EU · UK · USA" },
 ];
 
 export function Stats() {
@@ -35,7 +43,11 @@ export function Stats() {
             <Reveal key={s.label} delay={i * 0.08}>
               <div className="group relative h-full bg-card p-6 transition-colors hover:bg-surface-elevated sm:p-8">
                 <div className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                  <Counter value={s.value} suffix={s.suffix} />
+                  {s.text ? (
+                    <span>{s.text}</span>
+                  ) : (
+                    <Counter value={s.value} suffix={s.suffix} />
+                  )}
                 </div>
                 <div className="mt-3 text-sm font-medium text-foreground">
                   {s.label}

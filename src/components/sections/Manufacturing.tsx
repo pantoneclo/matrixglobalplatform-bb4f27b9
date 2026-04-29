@@ -31,7 +31,7 @@ const countries: Country[] = [
     flag: "🇧🇩",
     accent: "bg-emerald-500/15 text-emerald-300 ring-emerald-400/40",
     description:
-      "High-volume manufacturing across knit and woven programs with state-of-the-art facilities.",
+      "High-volume knit and woven manufacturing across owned units — 80 sewing lines, 20 tons/day output and 3M+ garments per month under direct control.",
     units: [
       { name: "Matrix Apparels Ltd", slug: "matrix-apparels" },
       { name: "IFS Texwear Ltd", slug: "ifs-texwear" },

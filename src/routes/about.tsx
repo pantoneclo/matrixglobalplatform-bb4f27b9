@@ -48,6 +48,23 @@ function AboutPage() {
                 supply, controls its production, and delivers finished goods directly to
                 retailers across the world.
               </p>
+
+              <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-3">
+                {[
+                  { k: "HSBC", v: "Backed Trade Finance", sub: "LC operations via Hong Kong" },
+                  { k: "FOB · DDP", v: "EU · UK · USA", sub: "Door-to-door delivery" },
+                  { k: "5+", v: "Owned Manufacturing Units", sub: "Across 3 countries" },
+                ].map((s) => (
+                  <div
+                    key={s.v}
+                    className="rounded-xl border border-brand/30 bg-brand/5 p-4 backdrop-blur"
+                  >
+                    <div className="text-lg font-semibold text-foreground">{s.k}</div>
+                    <div className="mt-1 text-sm font-medium text-foreground">{s.v}</div>
+                    <div className="mt-0.5 text-xs text-muted-foreground">{s.sub}</div>
+                  </div>
+                ))}
+              </div>
             </Reveal>
           </div>
         </section>

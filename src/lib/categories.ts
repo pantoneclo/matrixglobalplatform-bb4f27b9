@@ -51,7 +51,7 @@ const defaultFeatures: Feature[] = [
   {
     title: "Precision",
     highlight: "Craftsmanship",
-    body: "Every seam, stitch, and cut is engineered by our state-of-the-art facilities across South Asia. We utilize advanced flatlock and ultrasonic welding techniques.",
+    body: "Every seam, stitch and cut is engineered across our owned facilities in South Asia, with flatlock and ultrasonic welding capability for technical garment programs.",
   },
   {
     title: "Unmatched",
