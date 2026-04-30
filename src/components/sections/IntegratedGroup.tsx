@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/Reveal";
 import worldMap from "@/assets/world-map-dark.jpg";
-import { ArrowRight, Banknote, Factory, Globe2, Landmark, Ship } from "lucide-react";
+import { ArrowRight, Banknote, Factory, Globe2, Landmark, Layers, Ship, Wallet } from "lucide-react";
 
 type Hub = {
   code: string;
