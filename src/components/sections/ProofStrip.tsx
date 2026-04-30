@@ -1,4 +1,4 @@
-import { Banknote, Factory, Ship, ShieldCheck } from "lucide-react";
+import { Banknote, Factory, Ship, ShieldCheck, Landmark } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 const proofs = [
@@ -18,6 +18,11 @@ const proofs = [
     desc: "Door-to-door into EU, UK and USA via our Slovenia hub — you choose the incoterm.",
   },
   {
+    icon: Landmark,
+    title: "EU Direct Import Facility",
+    desc: "Matrix Design d.o.o. (Slovenia) — EU entity with EORI, EU VAT and direct import clearance into the single market.",
+  },
+  {
     icon: ShieldCheck,
     title: "Audit-Ready Compliance",
     desc: "BSCI, OEKO-TEX, GOTS, GRS and Sedex audited across owned facilities.",
@@ -33,7 +38,7 @@ export function ProofStrip() {
             Why Buyers Choose Matrix
           </p>
         </Reveal>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {proofs.map((p, i) => {
             const Icon = p.icon;
             return (
