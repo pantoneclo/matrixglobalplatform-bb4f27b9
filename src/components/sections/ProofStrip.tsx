@@ -1,4 +1,4 @@
-import { Banknote, Factory, Ship, ShieldCheck, Landmark } from "lucide-react";
+import { Banknote, Factory, Ship, ShieldCheck, Landmark, Layers, Wallet } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 const proofs = [
@@ -8,9 +8,19 @@ const proofs = [
     desc: "5+ owned units across Bangladesh, China and Sri Lanka — not a sourcing agency.",
   },
   {
+    icon: Layers,
+    title: "Low MOQ Friendly",
+    desc: "Start from 300–500 pcs/style on selected programs. Built for emerging brands and pilot collections — scale up only when ready.",
+  },
+  {
     icon: Banknote,
     title: "HSBC-Backed Trade Finance",
     desc: "Hong Kong parent with HSBC credit facility. Predictable LC terms across the group.",
+  },
+  {
+    icon: Wallet,
+    title: "Finance Flexibility",
+    desc: "LC at sight, usance, TT and open-account terms available for qualified buyers — payment structures that match your cash cycle.",
   },
   {
     icon: Ship,
@@ -38,7 +48,7 @@ export function ProofStrip() {
             Why Buyers Choose Matrix
           </p>
         </Reveal>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
           {proofs.map((p, i) => {
             const Icon = p.icon;
             return (
