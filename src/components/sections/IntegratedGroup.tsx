@@ -68,9 +68,19 @@ const benefits = [
     desc: "Fabric mill, sewing units and finishing under one group — not outsourced, not brokered.",
   },
   {
+    icon: Layers,
+    title: "Low MOQ Friendly",
+    desc: "Start from 300–500 pcs/style on selected programs. Pilot collections welcome — scale only when ready.",
+  },
+  {
     icon: Banknote,
     title: "HSBC-Backed Finance",
     desc: "Hong Kong parent with HSBC trade facility. Stable LC terms, predictable payment cycles.",
+  },
+  {
+    icon: Wallet,
+    title: "Finance Flexibility",
+    desc: "LC at sight, usance, TT and open-account terms for qualified buyers — payment that matches your cash cycle.",
   },
   {
     icon: Landmark,
