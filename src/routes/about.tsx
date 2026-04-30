@@ -49,9 +49,10 @@ function AboutPage() {
                 retailers across the world.
               </p>
 
-              <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-3">
+              <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
                 {[
                   { k: "HSBC", v: "Backed Trade Finance", sub: "LC operations via Hong Kong" },
+                  { k: "EU Entity", v: "Direct Import into EU", sub: "Matrix Design d.o.o. — Slovenia" },
                   { k: "FOB · DDP", v: "EU · UK · USA", sub: "Door-to-door delivery" },
                   { k: "5+", v: "Owned Manufacturing Units", sub: "Across 3 countries" },
                 ].map((s) => (

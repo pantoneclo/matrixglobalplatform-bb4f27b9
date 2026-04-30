@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/Reveal";
 import worldMap from "@/assets/world-map-dark.jpg";
-import { ArrowRight, Banknote, Factory, Globe2, Ship } from "lucide-react";
+import { ArrowRight, Banknote, Factory, Globe2, Landmark, Ship } from "lucide-react";
 
 type Hub = {
   code: string;
@@ -73,6 +73,11 @@ const benefits = [
     desc: "Hong Kong parent with HSBC trade facility. Stable LC terms, predictable payment cycles.",
   },
   {
+    icon: Landmark,
+    title: "EU Direct Import",
+    desc: "Matrix Design d.o.o. — our Slovenia EU entity with EORI, EU VAT and direct customs clearance into the single market.",
+  },
+  {
     icon: Ship,
     title: "FOB or DDP",
     desc: "Door-to-door into EU, UK and USA via Slovenia. You choose the incoterm — we handle the chain.",
@@ -122,7 +127,7 @@ export function IntegratedGroup() {
 
         {/* Buyer benefit strip */}
         <Reveal>
-          <div className="mb-12 grid gap-3 sm:grid-cols-2 lg:mb-16 lg:grid-cols-4">
+          <div className="mb-12 grid gap-3 sm:grid-cols-2 lg:mb-16 lg:grid-cols-3 xl:grid-cols-5">
             {benefits.map((b) => {
               const Icon = b.icon;
               return (
