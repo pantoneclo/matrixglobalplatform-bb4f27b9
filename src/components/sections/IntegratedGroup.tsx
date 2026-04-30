@@ -137,7 +137,7 @@ export function IntegratedGroup() {
 
         {/* Buyer benefit strip */}
         <Reveal>
-          <div className="mb-12 grid gap-3 sm:grid-cols-2 lg:mb-16 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="mb-12 grid gap-3 sm:grid-cols-2 lg:mb-16 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
             {benefits.map((b) => {
               const Icon = b.icon;
               return (
